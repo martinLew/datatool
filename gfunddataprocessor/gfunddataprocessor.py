@@ -705,42 +705,16 @@ def _decode_tick_data(infoFrame, columns, pad=False):
 if __name__ == "__main__":
     print('begin')
 
-    # 1.1. get_day_tick用法1： 传入一组日期
-    tt1 = time.time()
-    t1 = get_day_tick('10000287.sh', (20150731, 20161130), merge=False)
-    tt2 = time.time()
-    print('spend time ' + str(tt2-tt1))
-    print t1[0].index[0]
-    print t1[-1].index[-1]
-
-    # 1.2. get_day_tick用法2： 传入一个“开始--终止”日期 #   的元组， 检索出改时间段的tick数据后返回
-    print 'get t2'
-    tt1 = time.time()
-    t2 = get_day_tick('if1405', (20140322, 20140326))
-    tt2 = time.time()
-    print('spend time ' + str(tt2-tt1))
-    print t2.index[0]
-    print t2.index[-1]
-
-    # 1.3. get_day_tick用法3： 传入一个日期
-    #   检索出该日期的tick数据并返回
-    print 'get t3'
-    tt1 = time.time()
-    t3 = get_day_tick('if1405', 20140505, ['interest'])
-    tt2 = time.time()
-    print t3.index[0]
-    print t3.index[-1]
-    print('spend time ' + str(tt2-tt1))
-
     # 1.4. get_day_tick用法4：只传入期货类型代码表示获取“主力合约”
     print 'get t4'
     tt1 = time.time()
     t4 = get_day_tick(
         'if', [20140322, 20140323, 20140401],
-        ['interest', 'instrument_id', 'type'])
+        ['interest', 'instrument_id', 'type'],
+        data_source=YINHE)
     tt2 = time.time()
     print('spend time ' + str(tt2-tt1))
-    print t4.index[0], t4.instrument_id[0], t4.type[0]
+    print t4.instrument_id
     print t4.index[-1]
 
     # 1.5. get_day_tick用法5：只传入期货类型代码表示获取“主力合约”
