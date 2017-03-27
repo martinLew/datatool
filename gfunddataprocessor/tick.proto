@@ -1,0 +1,88 @@
+// Copyright 2016, Gfund Management Co.,Ltd.
+// All rights reserved.
+//
+// Author Chao Li <lichao@gfund.com>
+//
+// Tick message definition for tdb data structure.
+
+syntax = "proto2";
+
+message Tick {
+  optional int32           time = 1;
+  optional int32           price = 2;
+  optional int64           volume = 3;
+  optional int64           turnover = 4;
+  optional int32           match_items = 5;
+  optional int32           interest = 6;      // IOPV(Fund), interest(Bond)
+  optional int32           trade_flag = 7;
+  optional int32           bs_flag = 8;
+  optional int64           acc_volume = 9;   // Accumuated volume.
+  optional int64           acc_turnover = 10; // Accumuated turnover.
+  optional int32           high = 11;
+  optional int32           low = 12;
+  optional int32           open = 13;
+  optional int32           pre_close = 14;
+  // Futures fields.
+  optional int32           settle = 15;
+  optional int32           position = 16;
+  optional int32           cur_delta = 17;
+  optional int32           pre_settle = 18;
+  optional int32           pre_positioin = 19;
+  // Buy and sells fields.
+  optional int32           ask_price1 = 20;
+  optional int32           ask_price2 = 21;
+  optional int32           ask_price3 = 22;
+  optional int32           ask_price4 = 23;
+  optional int32           ask_price5 = 24;
+  optional int32           ask_price6 = 25;
+  optional int32           ask_price7 = 26;
+  optional int32           ask_price8 = 27;
+  optional int32           ask_price9 = 28;
+  optional int32           ask_price10 = 29;
+  optional uint32          ask_volume1 = 30;
+  optional uint32          ask_volume2 = 31;
+  optional uint32          ask_volume3 = 32;
+  optional uint32          ask_volume4 = 33;
+  optional uint32          ask_volume5 = 34;
+  optional uint32          ask_volume6 = 35;
+  optional uint32          ask_volume7 = 36;
+  optional uint32          ask_volume8 = 37;
+  optional uint32          ask_volume9 = 38;
+  optional uint32          ask_volume10 = 39;
+  optional int32           bid_price1 = 40;
+  optional int32           bid_price2 = 41;
+  optional int32           bid_price3 = 42;
+  optional int32           bid_price4 = 43;
+  optional int32           bid_price5 = 44;
+  optional int32           bid_price6 = 45;
+  optional int32           bid_price7 = 46;
+  optional int32           bid_price8 = 47;
+  optional int32           bid_price9 = 48;
+  optional int32           bid_price10 = 49;
+  optional uint32          bid_volume1 = 50;
+  optional uint32          bid_volume2 = 51;
+  optional uint32          bid_volume3 = 52;
+  optional uint32          bid_volume4 = 53;
+  optional uint32          bid_volume5 = 54;
+  optional uint32          bid_volume6 = 55;
+  optional uint32          bid_volume7 = 56;
+  optional uint32          bid_volume8 = 57;
+  optional uint32          bid_volume9 = 58;
+  optional uint32          bid_volume10 = 59;
+  optional int32           ask_avg_price = 60;
+  optional int32           bid_avg_price = 61;
+  optional int64           total_ask_volume = 62;
+  optional int64           total_bid_volume = 63;
+  // Index fields.
+  optional int32           index = 64;
+  optional int32           stocks = 65;
+  optional int32           ups = 66;
+  optional int32           downs = 67;
+  optional int32           hold_lines = 68;
+}
+
+message TickList {
+  repeated Tick            tick = 1;
+  optional bool            is_index = 2;
+}
+
